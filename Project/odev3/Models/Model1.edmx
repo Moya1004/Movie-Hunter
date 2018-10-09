@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cast">
+          <Key>
+            <PropertyRef Name="CastID" />
+          </Key>
+          <Property Name="CastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CastRole" Type="nvarchar" MaxLength="50" />
+          <Property Name="MovieID" Type="int" />
+          <Property Name="CastID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments_tbl">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MovieID" Type="int" Nullable="false" />
+          <Property Name="CommentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movie_tbl">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MovieName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReleaseDate" Type="date" />
+          <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="MovieGenre" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="MoviePoster" Type="varchar" MaxLength="350" Nullable="false" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="NumberOfRatings" Type="int" />
+          <Property Name="Director" Type="varchar" MaxLength="50" />
+          <Property Name="Writer" Type="varchar" MaxLength="50" />
+          <Property Name="Trailer" Type="varchar" MaxLength="250" />
+          <Property Name="NumberOfComments" Type="int" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsHeader" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewsFirstParagraph" Type="nvarchar(max)" />
+          <Property Name="AllofTheNews" Type="nvarchar(max)" />
+          <Property Name="MovieID" Type="int" />
+          <Property Name="NewsDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Rating_tbl">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="MovieID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users_Tbl">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Confirmation" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cast_Movie_tbl">
+          <End Role="Movie_tbl" Type="Self.Movie_tbl" Multiplicity="0..1" />
+          <End Role="Cast" Type="Self.Cast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_tbl">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Cast">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_tbl_Movie_tbl">
+          <End Role="Movie_tbl" Type="Self.Movie_tbl" Multiplicity="1" />
+          <End Role="Comments_tbl" Type="Self.Comments_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_tbl">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Comments_tbl">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_tbl_Users_Tbl">
+          <End Role="Users_Tbl" Type="Self.Users_Tbl" Multiplicity="1" />
+          <End Role="Comments_tbl" Type="Self.Comments_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Tbl">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Comments_tbl">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Movie_tbl">
+          <End Role="Movie_tbl" Type="Self.Movie_tbl" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_tbl">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Movie_tbl1">
+          <End Role="Movie_tbl" Type="Self.Movie_tbl" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_tbl">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Cast" EntityType="Self.Cast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments_tbl" EntityType="Self.Comments_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movie_tbl" EntityType="Self.Movie_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating_tbl" EntityType="Self.Rating_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Tbl" EntityType="Self.Users_Tbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cast_Movie_tbl" Association="Self.FK_Cast_Movie_tbl">
+            <End Role="Movie_tbl" EntitySet="Movie_tbl" />
+            <End Role="Cast" EntitySet="Cast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_tbl_Movie_tbl" Association="Self.FK_Comments_tbl_Movie_tbl">
+            <End Role="Movie_tbl" EntitySet="Movie_tbl" />
+            <End Role="Comments_tbl" EntitySet="Comments_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_tbl_Users_Tbl" Association="Self.FK_Comments_tbl_Users_Tbl">
+            <End Role="Users_Tbl" EntitySet="Users_Tbl" />
+            <End Role="Comments_tbl" EntitySet="Comments_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Movie_tbl" Association="Self.FK_News_Movie_tbl">
+            <End Role="Movie_tbl" EntitySet="Movie_tbl" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Movie_tbl1" Association="Self.FK_News_Movie_tbl1">
+            <End Role="Movie_tbl" EntitySet="Movie_tbl" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cast">
+          <Key>
+            <PropertyRef Name="CastID" />
+          </Key>
+          <Property Name="CastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CastRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MovieID" Type="Int32" />
+          <Property Name="CastID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Movie_tbl" Relationship="Self.FK_Cast_Movie_tbl" FromRole="Cast" ToRole="Movie_tbl" />
+        </EntityType>
+        <EntityType Name="Comments_tbl">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MovieID" Type="Int32" Nullable="false" />
+          <Property Name="CommentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Movie_tbl" Relationship="Self.FK_Comments_tbl_Movie_tbl" FromRole="Comments_tbl" ToRole="Movie_tbl" />
+          <NavigationProperty Name="Users_Tbl" Relationship="Self.FK_Comments_tbl_Users_Tbl" FromRole="Comments_tbl" ToRole="Users_Tbl" />
+        </EntityType>
+        <EntityType Name="Movie_tbl">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MovieName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="MovieGenre" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MoviePoster" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="NumberOfRatings" Type="Int32" />
+          <Property Name="Director" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Writer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Trailer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfComments" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Casts" Relationship="Self.FK_Cast_Movie_tbl" FromRole="Movie_tbl" ToRole="Cast" />
+          <NavigationProperty Name="Comments_tbl" Relationship="Self.FK_Comments_tbl_Movie_tbl" FromRole="Movie_tbl" ToRole="Comments_tbl" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Movie_tbl" FromRole="Movie_tbl" ToRole="News" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsHeader" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NewsFirstParagraph" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AllofTheNews" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MovieID" Type="Int32" />
+          <NavigationProperty Name="Movie_tbl" Relationship="Self.FK_News_Movie_tbl" FromRole="News" ToRole="Movie_tbl" />
+          <Property Name="NewsDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Rating_tbl">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="MovieID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users_Tbl">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Confirmation" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Comments_tbl" Relationship="Self.FK_Comments_tbl_Users_Tbl" FromRole="Users_Tbl" ToRole="Comments_tbl" />
+        </EntityType>
+        <Association Name="FK_Cast_Movie_tbl">
+          <End Role="Movie_tbl" Type="Self.Movie_tbl" Multiplicity="0..1" />
+          <End Role="Cast" Type="Self.Cast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_tbl">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Cast">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_tbl_Movie_tbl">
+          <End Role="Movie_tbl" Type="Self.Movie_tbl" Multiplicity="1" />
+          <End Role="Comments_tbl" Type="Self.Comments_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_tbl">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="Comments_tbl">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_tbl_Users_Tbl">
+          <End Role="Users_Tbl" Type="Self.Users_Tbl" Multiplicity="1" />
+          <End Role="Comments_tbl" Type="Self.Comments_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_Tbl">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Comments_tbl">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Movie_tbl">
+          <End Role="Movie_tbl" Type="Self.Movie_tbl" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_tbl">
+              <PropertyRef Name="MovieID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="MovieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Movie_HunterEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Casts" EntityType="Self.Cast" />
+          <EntitySet Name="Comments_tbl" EntityType="Self.Comments_tbl" />
+          <EntitySet Name="Movie_tbl" EntityType="Self.Movie_tbl" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="Rating_tbl" EntityType="Self.Rating_tbl" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users_Tbl" EntityType="Self.Users_Tbl" />
+          <AssociationSet Name="FK_Cast_Movie_tbl" Association="Self.FK_Cast_Movie_tbl">
+            <End Role="Movie_tbl" EntitySet="Movie_tbl" />
+            <End Role="Cast" EntitySet="Casts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_tbl_Movie_tbl" Association="Self.FK_Comments_tbl_Movie_tbl">
+            <End Role="Movie_tbl" EntitySet="Movie_tbl" />
+            <End Role="Comments_tbl" EntitySet="Comments_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_tbl_Users_Tbl" Association="Self.FK_Comments_tbl_Users_Tbl">
+            <End Role="Users_Tbl" EntitySet="Users_Tbl" />
+            <End Role="Comments_tbl" EntitySet="Comments_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Movie_tbl" Association="Self.FK_News_Movie_tbl">
+            <End Role="Movie_tbl" EntitySet="Movie_tbl" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Movie_HunterEntities3">
+          <EntitySetMapping Name="Casts">
+            <EntityTypeMapping TypeName="Model.Cast">
+              <MappingFragment StoreEntitySet="Cast">
+                <ScalarProperty Name="CastName" ColumnName="CastName" />
+                <ScalarProperty Name="CastRole" ColumnName="CastRole" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="CastID" ColumnName="CastID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments_tbl">
+            <EntityTypeMapping TypeName="Model.Comments_tbl">
+              <MappingFragment StoreEntitySet="Comments_tbl">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movie_tbl">
+            <EntityTypeMapping TypeName="Model.Movie_tbl">
+              <MappingFragment StoreEntitySet="Movie_tbl">
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="MovieName" ColumnName="MovieName" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="MovieGenre" ColumnName="MovieGenre" />
+                <ScalarProperty Name="MoviePoster" ColumnName="MoviePoster" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="NumberOfRatings" ColumnName="NumberOfRatings" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Writer" ColumnName="Writer" />
+                <ScalarProperty Name="Trailer" ColumnName="Trailer" />
+                <ScalarProperty Name="NumberOfComments" ColumnName="NumberOfComments" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="Model.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="NewsHeader" ColumnName="NewsHeader" />
+                <ScalarProperty Name="NewsFirstParagraph" ColumnName="NewsFirstParagraph" />
+                <ScalarProperty Name="AllofTheNews" ColumnName="AllofTheNews" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rating_tbl">
+            <EntityTypeMapping TypeName="Model.Rating_tbl">
+              <MappingFragment StoreEntitySet="Rating_tbl">
+                <ScalarProperty Name="RatingID" ColumnName="RatingID" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Tbl">
+            <EntityTypeMapping TypeName="Model.Users_Tbl">
+              <MappingFragment StoreEntitySet="Users_Tbl">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Confirmation" ColumnName="Confirmation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DD43DB70-D7ED-4692-8F52-E4D6759933AA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>odev3</RootNamespace>
+    <AssemblyName>odev3</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.1.3\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Concurrent" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\LanguageAttribute.cs" />
+    <Compile Include="App_Start\LocalizationAttribute.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccessDeniedController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MoviesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Models\MovieModel.cs" />
+    <Compile Include="AspNetRoles.cs">
+      <DependentUpon>DefaultConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaims.cs">
+      <DependentUpon>DefaultConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogins.cs">
+      <DependentUpon>DefaultConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUsers.cs">
+      <DependentUpon>DefaultConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cast_tbl.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Rating_tblController.cs" />
+    <Compile Include="DefaultConnection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultConnection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultConnection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultConnection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultConnection.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Movies_tbl.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Movie_ReviewDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Movie_ReviewDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Movie_ReviewDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Movie_ReviewDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Movie_ReviewDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="News_tbl.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rating_tbl.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Home.tr.Designer.cs">
+      <DependentUpon>Home.tr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Resources\Home.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Home.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reviews_tbl.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks_tbl.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users_tbl.cs">
+      <DependentUpon>Movie_ReviewDB.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\DefaultConnection.sdf" />
+    <Content Include="App_Data\Movie_ReviewDB.sdf" />
+    <Content Include="Areas\Admin\Content\css\bootstrap-editable.css" />
+    <Content Include="Areas\Admin\Content\css\fullcalendar.css" />
+    <Content Include="Areas\Admin\Content\css\main.css" />
+    <Content Include="Areas\Admin\Content\css\morris.css" />
+    <Content Include="Areas\Admin\Content\css\nvd-charts.css" />
+    <Content Include="Areas\Admin\Content\css\select2.css" />
+    <Content Include="Areas\Admin\Content\css\style.css" />
+    <Content Include="Areas\Admin\Content\css\timepicker.css" />
+    <Content Include="Areas\Admin\Content\css\wysiwyg\bootstrap-wysihtml5.css" />
+    <Content Include="Areas\Admin\Content\css\wysiwyg\wysiwyg-color.css" />
+    <Content Include="Areas\Admin\Content\icomoon\fonts\icomoon.dev.svg" />
+    <Content Include="Areas\Admin\Content\icomoon\fonts\icomoon.svg" />
+    <Content Include="Areas\Admin\Content\icomoon\index.html" />
+    <Content Include="Areas\Admin\Content\icomoon\license.txt" />
+    <Content Include="Areas\Admin\Content\icomoon\lte-ie7.js" />
+    <Content Include="Areas\Admin\Content\icomoon\style.css" />
+    <Content Include="Areas\Admin\Content\img\alpha.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-1.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-2.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-3.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-4.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-5.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-6.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-7.png" />
+    <Content Include="Areas\Admin\Content\img\avatar-8.png" />
+    <Content Include="Areas\Admin\Content\img\brillant.png" />
+    <Content Include="Areas\Admin\Content\img\clear.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons-halflings.png" />
+    <Content Include="Areas\Admin\Content\img\gray_jean.png" />
+    <Content Include="Areas\Admin\Content\img\hue.png" />
+    <Content Include="Areas\Admin\Content\img\loading-black.gif" />
+    <Content Include="Areas\Admin\Content\img\loading-blue.gif" />
+    <Content Include="Areas\Admin\Content\img\loading-green.gif" />
+    <Content Include="Areas\Admin\Content\img\loading-orange.gif" />
+    <Content Include="Areas\Admin\Content\img\loading-red.gif" />
+    <Content Include="Areas\Admin\Content\img\loading.gif" />
+    <Content Include="Areas\Admin\Content\img\logo-blue.png" />
+    <Content Include="Areas\Admin\Content\img\logo.png" />
+    <Content Include="Areas\Admin\Content\img\menu-arrow.png" />
+    <Content Include="Areas\Admin\Content\img\saturation.png" />
+    <Content Include="Areas\Admin\Content\img\select2.png" />
+    <Content Include="Areas\Admin\Content\img\social_icons.png" />
+    <Content Include="Areas\Admin\Content\img\sorting.png" />
+    <Content Include="Areas\Admin\Content\img\sorting_asc.png" />
+    <Content Include="Areas\Admin\Content\img\sorting_desc.png" />
+    <Content Include="Areas\Admin\Content\img\task-l-arrow.png" />
+    <Content Include="Areas\Admin\Content\img\task-r-arrow.png" />
+    <Content Include="Areas\Admin\Content\img\task-r-arrow.png.png" />
+    <Content Include="Areas\Admin\Content\img\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Areas\Admin\Content\img\wild_oliva.png" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-editable.min.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-timepicker.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap.js" />
+    <Content Include="Areas\Admin\Content\js\custom-forms.js" />
+    <Content Include="Areas\Admin\Content\js\custom-graphs.js" />
+    <Content Include="Areas\Admin\Content\js\custom-index.js" />
+    <Content Include="Areas\Admin\Content\js\custom-tables.js" />
+    <Content Include="Areas\Admin\Content\js\custom.js" />
+    <Content Include="Areas\Admin\Content\js\date-picker\date.js" />
+    <Content Include="Areas\Admin\Content\js\date-picker\daterangepicker.js" />
+    <Content Include="Areas\Admin\Content\js\flot\jquery.flot.js" />
+    <Content Include="Areas\Admin\Content\js\flot\jquery.flot.resize.min.js" />
+    <Content Include="Areas\Admin\Content\js\flot\jquery.flot.selection.js" />
+    <Content Include="Areas\Admin\Content\js\fullcalendar.js" />
+    <Content Include="Areas\Admin\Content\js\html5-trunk.js" />
+    <Content Include="Areas\Admin\Content\js\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.dataTables.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.sparkline.js" />
+    <Content Include="Areas\Admin\Content\js\moment.js" />
+    <Content Include="Areas\Admin\Content\js\morris\morris.js" />
+    <Content Include="Areas\Admin\Content\js\morris\raphael-min.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\axis.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\d3.v2.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\legend.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\line.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\lineWithFocusChart.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\nv.d3.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\scatter.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\stream_layers.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\tooltip.js" />
+    <Content Include="Areas\Admin\Content\js\nvd\utils.js" />
+    <Content Include="Areas\Admin\Content\js\select2.js" />
+    <Content Include="Areas\Admin\Content\js\tiny-scrollbar.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\bootstrap-wysihtml5.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.ar-AR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.bg-BG.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.ca-CT.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.cs-CZ.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.de-DE.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.el-GR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.es-AR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.fr-FR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.hr-HR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.it-IT.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.ja-JP.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.ko-KR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.lt-LT.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.mo-MD.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.nb-NB.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.nl-NL.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.pl-PL.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.pt-BR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.ru-RU.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.sk-SK.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.sv-SE.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.tr-TR.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\locales\bootstrap-wysihtml5.zh-TW.js" />
+    <Content Include="Areas\Admin\Content\js\wysiwyg\wysihtml5-0.3.0.js" />
+    <Content Include="Areas\Admin\Content\main.css" />
+    <Content Include="Content\bootstrap-rating.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\ie6.css" />
+    <Content Include="Content\images\12389056_417605055115718_1766847078_o.jpg" />
+    <Content Include="Content\images\Bajirao-Mastani-Poster-Deepika-Padukone.jpg" />
+    <Content Include="Content\images\bajrangi-bhaijaan-2015-turkce-altyazili-hd-izle-651.jpg" />
+    <Content Include="Content\images\body-bg.gif" />
+    <Content Include="Content\images\coming-soon1.jpg" />
+    <Content Include="Content\images\coming-soon2.jpg" />
+    <Content Include="Content\images\comments.gif" />
+    <Content Include="Content\images\Dilwale-2015-Movie-Poster-wallpaper.jpg" />
+    <Content Include="Content\images\english.jpg" />
+    <Content Include="Content\images\f6514051060f28ce5726d1e4350d2293_500x735.jpg" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\furious7.jpg" />
+    <Content Include="Content\images\House.jpg" />
+    <Content Include="Content\images\image-hover.png" />
+    <Content Include="Content\images\logo.gif" />
+    <Content Include="Content\images\movie1.jpg" />
+    <Content Include="Content\images\movie10.jpg" />
+    <Content Include="Content\images\movie11.jpg" />
+    <Content Include="Content\images\movie12.jpg" />
+    <Content Include="Content\images\movie13.jpg" />
+    <Content Include="Content\images\movie14.jpg" />
+    <Content Include="Content\images\movie15.jpg" />
+    <Content Include="Content\images\movie16.jpg" />
+    <Content Include="Content\images\movie17.jpg" />
+    <Content Include="Content\images\movie18.jpg" />
+    <Content Include="Content\images\movie19.jpg" />
+    <Content Include="Content\images\movie2.jpg" />
+    <Content Include="Content\images\movie20.jpg" />
+    <Content Include="Content\images\movie21.jpg" />
+    <Content Include="Content\images\movie3.jpg" />
+    <Content Include="Content\images\movie4.jpg" />
+    <Content Include="Content\images\movie5.jpg" />
+    <Content Include="Content\images\movie6.jpg" />
+    <Content Include="Content\images\movie7.jpg" />
+    <Content Include="Content\images\movie8.jpg" />
+    <Content Include="Content\images\movie9.jpg" />
+    <Content Include="Content\images\Narnia.jpg" />
+    <Content Include="Content\images\social.gif" />
+    <Content Include="Content\images\Star Wars_l.jpg" />
+    <Content Include="Content\images\Star-gold.jpg" />
+    <Content Include="Content\images\stars.gif" />
+    <Content Include="Content\images\stars.png" />
+    <Content Include="Content\images\turkish.png" />
+    <Content Include="Content\images\xmen.jpg" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\style1.css" />
+    <Content Include="DefaultConnection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DefaultConnection.Context.cs</LastGenOutput>
+      <DependentUpon>DefaultConnection.edmx</DependentUpon>
+    </Content>
+    <Content Include="DefaultConnection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DefaultConnection.cs</LastGenOutput>
+      <DependentUpon>DefaultConnection.edmx</DependentUpon>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Movie_ReviewDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Movie_ReviewDB.Context.cs</LastGenOutput>
+      <DependentUpon>Movie_ReviewDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Movie_ReviewDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Movie_ReviewDB.cs</LastGenOutput>
+      <DependentUpon>Movie_ReviewDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap-rating.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Content\css\main.scss" />
+    <Content Include="Areas\Admin\Content\icomoon\fonts\icomoon.eot" />
+    <Content Include="Areas\Admin\Content\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Areas\Admin\Content\icomoon\fonts\icomoon.woff" />
+    <Content Include="Areas\Admin\Views\Movies\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Movies\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Movies\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Movies\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Movies\DeleteConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\News\DeleteConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\AccessDenied\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <EntityDeploy Include="Movie_ReviewDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Movie_ReviewDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Movie_ReviewDBedmx.diagram">
+      <DependentUpon>Movie_ReviewDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="App.config" />
+    <EntityDeploy Include="DefaultConnection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DefaultConnection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DefaultConnectionedmx.diagram">
+      <DependentUpon>DefaultConnection.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\AdminHome\AddNewTask.cshtml" />
+    <None Include="Properties\PublishProfiles\MovieHunter1 - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\MovieHunter1 - FTP %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\MovieHunter1 - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\MovieHunter1 - Web Deploy %284%29.pubxml" />
+    <Content Include="Views\Home\Add_Review.cshtml" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\msvcr90.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
+    <None Include="Properties\PublishProfiles\MovieHunter1 - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\MovieHunter1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\MovieHunter1 - Web Deploy %282%29.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\MovieHunter1 - Web Deploy.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.2.min.js" />
+    <Content Include="Scripts\jquery-func.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.rater.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tooltip.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\font-awesome.min.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Info.cshtml" />
+    <Content Include="fonts\Contact.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_News.cshtml" />
+    <Content Include="Views\Home\_Rating.cshtml" />
+    <Content Include="Views\Rating_tbl\Create.cshtml" />
+    <Content Include="Views\Rating_tbl\Delete.cshtml" />
+    <Content Include="Views\Rating_tbl\Details.cshtml" />
+    <Content Include="Views\Rating_tbl\Edit.cshtml" />
+    <Content Include="Views\Rating_tbl\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Home\_AddRating.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\Movie_tbl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Home.tr.resx">
+      <Generator>publicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.tr.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Home.resx">
+      <Generator>publicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56404</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56404/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

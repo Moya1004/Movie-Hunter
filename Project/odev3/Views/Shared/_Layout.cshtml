@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>MovieHunter</title>
+    <meta http-equiv="content1-Type" content1="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="~/Content/style.css" type="text/css" media="all" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-func.js"></script>
+    <!--[if IE 6]><link rel="stylesheet" href="./Content/ie6.css" type="text/css" media="all" /><![endif]-->
+</head>
+
+<body id="shell">
+    <div id="header">
+        <h1 id="logo"><a href="#">MovieHunter</a></h1>
+        <div >
+            @{Html.RenderPartial("_LoginPartial"); }
+            
+        </div>
+        @Html.ActionLink(" ", "Index", "Home", new { lang = "en" }, new { style = "background: url('" + Url.Content("/Content/images/english.jpg") + "') no-repeat center; margin-top:18px; margin-left:20px; background-size:cover; display:inline-block; height:20px; width:25px;" })
+        @Html.ActionLink(" ", "Index", "Home", new { lang = "tr" }, new { style = "background: url('" + Url.Content("/Content/images/turkish.png") + "') no-repeat center; margin-top:18px; background-size:cover; display:inline-block; height:20px; width:25px;" })
+        <div id="navigation">
+            <ul>
+                <li>@Html.ActionLink(Resources.Home.home, "Index", "Home", new { @class = "active" })</li>
+                <li><a href="#coming">@Resources.Home.news</a></li>
+                <li><a href="#">@Resources.Home.intheater</a></li>
+                <li><a href="#">@Resources.Home.coming_soon</a></li>
+                <li>@Html.ActionLink(Resources.Home.about, "About", "Home")</li>
+                <li><a href="#">@Resources.Home.advertise</a></li>
+            </ul>
+        </div>
+        <div id="sub-navigation">
+            <ul>
+                <li><a href="#">@Resources.Home.showall</a></li>
+                <li><a href="#">@Resources.Home.latesttrailers</a></li>
+                <li><a href="#">@Resources.Home.toprated</a></li>
+                <li><a href="#">@Resources.Home.mostcommented</a></li>
+            </ul>
+            <div id="search">
+                
+                @using (Html.BeginForm("Search", "Home",new { name = "dilwale" }, FormMethod.Post))
+                {
+                    var value = Resources.Home.Go + "!";
+                    var value1 = Resources.Home.entersearchhere.ToString();
+                    <label for="search-field">@Resources.Home.search</label>
+                    <input type="text" name="search field" placeholder="Enter Search Here" id="search-field" class="blink search-field" />
+                    <input type="submit" value=@value class="search-button" />
+
+
+                }
+            </div>
+        </div>
+    </div>
+        @RenderBody()
+    <div id="footer">
+        <p class="lf">Copyright &copy; @DateTime.Now.Year - <b>@Html.ActionLink("MovieHunter.COM","Index","Home")</b> - All Rights Reserved</p>
+        <p class="rf">A Project By Mohammad-Yusuf-Azimi <b class="country">(Afghanistan)</b>, &nbsp;Azra-Xheladini<b class="country">(Macedonia)</b> &nbsp;& Hasan-Alkhder<b class="country">(Syria)</bclass="country"></p>
+        <div style="clear:both;"></div>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

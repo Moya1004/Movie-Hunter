@@ -1,0 +1,35 @@
+﻿@model Rating_tbl
+@{
+    Layout = null;
+    var username = User.Identity.Name;
+}
+@{  Movie_ReviewDBEntities db = new Movie_ReviewDBEntities();
+    bool rrating = Model.Rating == -1 ? false : true;
+}
+@{ Rating_tbl abc = new Rating_tbl();}
+@if (rrating == true)
+{<span id="hich">Your rating:</span>
+    
+
+    var list = db.Rating_tbl.ToList();
+    @Html.TextBox(" ", Model.Rating, new { type = "hidden", @class = "rating-tooltip", id = "programmatically-rating", disabled = "disabled" });
+}
+else
+{
+    <span id="hich">Your rating:</span>
+    if (User.Identity.IsAuthenticated)
+    {
+        using (Html.BeginForm("Info", "Home", FormMethod.Post))
+        {
+            Html.AntiForgeryToken();
+@Html.TextBoxFor(model => model.MovieID, new { type = "hidden", Value = Model.MovieID })
+@Html.TextBoxFor(model => model.Rating, new { type = "hidden", id = "programmatically-rating" })
+@Html.TextBoxFor(model => model.UserName, new { type = "hidden", Value = username })
+<span>&nbsp;</span> <input type="submit" value="Submit Rating" class="btn btn-primary btn-xs" />
+        }
+    }
+    else
+    {
+        <span id="hich">@Html.ActionLink("Login To Rate","Login","Account",null, new { id = "student", style = " background-color:black; padding:4px; text-decoration:none; Font-weight:bolder;" })</span>
+    }
+}

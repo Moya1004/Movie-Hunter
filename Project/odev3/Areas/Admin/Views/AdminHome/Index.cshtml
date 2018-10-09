@@ -1,0 +1,42 @@
+﻿@model List<Tasks_tbl>
+@{
+    ViewBag.Title = "TimeLine";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="dashboard-wrapper">
+        <div class="main-container">
+            <div class="row-fluid">
+                <div class="span4">
+                    <div class="widget no-margin">
+                        <div class="widget-body">
+                            <ul class="tasks">
+                                @foreach (var item in Model)
+                                {
+                                    <li>
+                                        <img src=@item.Task_Avatar class="avatar" alt="Avatar">
+                                        <div class="message-date">
+                                            <h3 class="date text-info">@item.Task_Date_Day</h3>
+                                            <p class="month">@item.Task_Date_Month</p>
+                                        </div>
+                                        <div class="message-wrapper">
+                                            <h4 class="message-heading">@item.Task_Header</h4>
+                                            <p class="message">
+                                                @item.Task_Header
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <br />
+                                }
+                            </ul>
+                        </div>
+                        @Html.ActionLink("Add New Task", "AddNewTask", "AdminHome", new { @class = "btn btn-large btn-primary", id = "addnew" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

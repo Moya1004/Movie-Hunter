@@ -1,0 +1,213 @@
+﻿@model odev3.Areas.Admin.Models.MovieModel
+@{
+    ViewBag.Title = "AddMovie";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Date = (" fsda").ToString();
+
+}
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+  <html class="lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+  <html class="lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+  <html class="lt-ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 8]>
+  <!-->
+<html lang="en">
+<!--
+<![endif]-->
+<body>
+    <div class="container-fluid">
+        <div class="dashboard-wrapper">
+            <div class="main-container">
+                <br>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <div class="title">
+                                    <span class="fs1" aria-hidden="true" data-icon="&#xe023;"></span> Add New Movie
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <div class="form-horizontal no-margin">
+                                    @using (Html.BeginForm("Add", "Movies", FormMethod.Post, new { @class = "form-horizantal", enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.MovieName, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.MovieName, new { @class = "span12" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @{ int day = 1; int month = 1; int year = 2015; } 
+                                            @Html.LabelFor(x => x.ReleaseDate, new { @class = "control-label" }) &nbsp; &nbsp; &nbsp;
+                                            @Html.DropDownListFor(x => day, new[] { new SelectListItem { Text = "1", Value = "1" },
+                                                                        new SelectListItem { Text = "2", Value = "2"},
+                                                                        new SelectListItem { Text = "3", Value = "3"},
+                                                                        new SelectListItem { Text = "4", Value = "4"},
+                                                                        new SelectListItem { Text = "5", Value = "5"},
+                                                                        new SelectListItem { Text = "6", Value = "6"},
+                                                                        new SelectListItem { Text = "7", Value = "7"},
+                                                                        new SelectListItem { Text = "8", Value = "8"},
+                                                                        new SelectListItem { Text = "9", Value = "9"},
+                                                                        new SelectListItem { Text = "10", Value = "10"},
+                                                                        new SelectListItem { Text = "11", Value = "11"},
+                                                                        new SelectListItem { Text = "12", Value = "12"},
+                                                                        new SelectListItem { Text = "13", Value = "13"},
+                                                                        new SelectListItem { Text = "14", Value = "14"},
+                                                                        new SelectListItem { Text = "15", Value = "15"},
+                                                                        new SelectListItem { Text = "16", Value = "16"},
+                                                                        new SelectListItem { Text = "17", Value = "17"},
+                                                                        new SelectListItem { Text = "18", Value = "18"},
+                                                                        new SelectListItem { Text = "19", Value = "19"},
+                                                                        new SelectListItem { Text = "20", Value = "20"},
+                                                                        new SelectListItem { Text = "21", Value = "21"},
+                                                                        new SelectListItem { Text = "22", Value = "22"},
+                                                                        new SelectListItem { Text = "23", Value = "23"},
+                                                                        new SelectListItem { Text = "24", Value = "24"},
+                                                                        new SelectListItem { Text = "25", Value = "25"},
+                                                                        new SelectListItem { Text = "26", Value = "26"},
+                                                                        new SelectListItem { Text = "27", Value = "27"},
+                                                                        new SelectListItem { Text = "28", Value = "28"},
+                                                                        new SelectListItem { Text = "29", Value = "29"},
+                                                                        new SelectListItem { Text = "30", Value = "30"},
+                                                                        }, new { @class = "span3 input-left-top-margins" })
+                                            @Html.DropDownListFor(x => month, new[] { new SelectListItem { Text = "Januarya", Value = "1"},
+                                                                        new SelectListItem { Text = "February", Value = "2"},
+                                                                        new SelectListItem { Text = "March", Value = "3"},
+                                                                        new SelectListItem { Text = "April", Value = "4"},
+                                                                        new SelectListItem { Text = "May", Value = "5"},
+                                                                        new SelectListItem { Text = "June", Value = "6"},
+                                                                        new SelectListItem { Text = "July", Value = "7"},
+                                                                        new SelectListItem { Text = "August", Value = "8"},
+                                                                        new SelectListItem { Text = "September", Value = "9"},
+                                                                        new SelectListItem { Text = "October", Value = "10"},
+                                                                        new SelectListItem { Text = "November", Value = "11"},
+                                                                        new SelectListItem { Text = "December", Value = "12"},
+
+
+                                                                        }, new { @class = "span3" })
+
+                                            @Html.DropDownListFor(x => year, new[] { new SelectListItem { Text = "1990", Value = "1990" },
+                                                                        new SelectListItem { Text = "1991", Value = "1991"},
+                                                                        new SelectListItem { Text = "1992", Value = "1992"},
+                                                                        new SelectListItem { Text = "1993", Value = "1993"},
+                                                                        new SelectListItem { Text = "1994", Value = "1994"},
+                                                                        new SelectListItem { Text = "1995", Value = "1995"},
+                                                                        new SelectListItem { Text = "1996", Value = "1996"},
+                                                                        new SelectListItem { Text = "1997", Value = "1997"},
+                                                                        new SelectListItem { Text = "1998", Value = "1998"},
+                                                                        new SelectListItem { Text = "1999", Value = "1999"},
+                                                                        new SelectListItem { Text = "2000", Value = "2000"},
+                                                                        new SelectListItem { Text = "2001", Value = "2001"},
+                                                                        new SelectListItem { Text = "2002", Value = "2002"},
+                                                                        new SelectListItem { Text = "2003", Value = "2003"},
+                                                                        new SelectListItem { Text = "2004", Value = "2004"},
+                                                                        new SelectListItem { Text = "2005", Value = "2005"},
+                                                                        new SelectListItem { Text = "2006", Value = "2006"},
+                                                                        new SelectListItem { Text = "2007", Value = "2007"},
+                                                                        new SelectListItem { Text = "2008", Value = "2008"},
+                                                                        new SelectListItem { Text = "2009", Value = "2009"},
+                                                                        new SelectListItem { Text = "2010", Value = "2010"},
+                                                                        new SelectListItem { Text = "2011", Value = "2011"},
+                                                                        new SelectListItem { Text = "2012", Value = "2012"},
+                                                                        new SelectListItem { Text = "2013", Value = "2013"},
+                                                                        new SelectListItem { Text = "2014", Value = "2014"},
+                                                                        new SelectListItem { Text = "2015", Value = "2015"},
+                                                                        new SelectListItem { Text = "2016", Value = "2016"},
+                                                                        new SelectListItem { Text = "2017", Value = "2017"},
+                                                                        new SelectListItem { Text = "2018", Value = "2018"},
+                                                                        new SelectListItem { Text = "2019", Value = "2019"},
+                                                                        }, new { @class = "span3 input-left-top-margins" })
+
+                                        </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(x => x.MovieGenre, new { @class = "control-label" })
+                                                    <div class="controls controls-row">
+                                                        @Html.TextBoxFor(x => x.MovieGenre, new { @class = "span12" })
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(x => x.MoviePoster, new { @class = "control-label" })
+                                                    <div class="controls controls-row">
+                                                        @Html.TextBoxFor(x => x.MoviePoster, new { @class = "form-control", style = "height:40px;padding:5px;", type = "file" })
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @{ DateTime release = DateTime.Now;}
+                                                    @Html.LabelFor(x => x.Duration, new { @class = "control-label" })
+                                                    <div class="controls controls-row">
+                                                        @Html.TextBoxFor(x => x.Duration, new { @class = "span4" })
+                                                        @Html.TextBoxFor(x => x.Rating, new { type = "hidden", Value = 0 })
+                                                        @Html.TextBoxFor(x => x.ReleaseDate, new { type = "hidden", Value = DateTime.Now })
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(x => x.Director, new { @class = "control-label" })
+                                                    <div class="controls controls-row">
+                                                        @Html.TextBoxFor(x => x.Director, new { @class = "span12" })
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(x => x.Writer, new { @class = "control-label" })
+                                                    <div class="controls controls-row">
+                                                        @Html.TextBoxFor(x => x.Writer, new { @class = "span12" })
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(x => x.Trailer, new { @class = "control-label" })
+                                                    <div class="controls controls-row">
+                                                        @Html.TextBoxFor(x => x.Trailer, new { @class = "span4" })
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    @Html.LabelFor(x => x.Country, new { @class = "control-label" })
+                                                    <div class="controls controls-row">
+                                                        @Html.TextBoxFor(x => x.Country, new { @class = "span4" })
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                @Html.ActionLink("Back To List", "Index", "Home", new { @class = "btn btn-info pull-right" })
+                                                        <button type="submit" class="btn btn-large btn-warning2 btn-block" id="addnew">Add Movie</button>
+                                                        <div class="clearfix"></div>
+                                                        }
+                                    <style>
+                                        #addnew {
+                                            width: 115px;
+                                            height: 30px;
+                                            float: right;
+                                            font-size: 15px;
+                                            padding: 4px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/wysiwyg/wysihtml5-0.3.0.js"></script>
+    <script src="js/wysiwyg/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="js/date-picker/date.js"></script>
+    <script type="text/javascript" src="js/date-picker/daterangepicker.js"></script>
+    <script type="text/javascript" src="js/bootstrap-timepicker.js"></script>
+
+    <!-- Editable Inputs -->
+    <script src="js/bootstrap-editable.min.js"></script>
+    <script src="js/select2.js"></script>
+
+    <!-- custom Js -->
+    <script src="js/custom-forms.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@model Reviews_tbl
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add_Review</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("Add_Rating", "Home", FormMethod.Post))
+        {
+            @Html.TextBoxFor(x => x.ReviewTitle)
+            @Html.TextAreaFor(x => x.Review, new { id = "wysiwyg", @class = "input-block-level no-margin", placeholder = "Full News.....", style = "height: 140px", Required = "Required" })
+            @Html.TextBoxFor(x => x.ReviewDate , new {type="hidden" ,Value= DateTime.Now })
+            @Html.TextBoxFor(x => x.MovieId,new { type="hidden",Value = Model.MovieId})
+            @Html.TextBoxFor(x => x.UserName, new {type="hidden", Value = User.Identity.Name})
+            @Html.TextBoxFor(x => x.RatingID , new { type= "hidden"})
+            <br />
+            <button value="Review" type="submit" class="btn-default"></button>
+        }
+    </div>
+</body>
+</html>

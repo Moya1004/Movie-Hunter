@@ -1,0 +1,117 @@
+﻿@model List<Movies_tbl>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div id="shell">
+    <div id="main1">
+        <div id="content1">
+            <div class="box1">
+                <div class="head1">
+                    <h2>@Resources.Home.latesttrailers</h2>
+                    <p class="text-right"><a href="#">@Resources.Home.seeall</a></p>
+                </div>
+                @{ var a = Model.OrderByDescending(x => x.ReleaseDate).Take(5);}
+                @foreach (var item in a)
+                {
+                    var x = @item.MoviePoster.ToString().Trim();
+                      
+                    <div class="movie">
+                        <div class="movie-image">
+                            <span class="play">@Html.ActionLink(" ","Info","Home",new {id=item.MovieID },null)<span class="name">@item.MovieName</span></span>@Html.ActionLink(" ", "Info", "Home",null, new { style = "background: url('" + Url.Content(@item.MoviePoster) + "') no-repeat center right; display:block; background-size:cover; height:214px; width:152px;" })
+                        </div>
+                        <div class="rating">
+                            <p>@Resources.Home.rating</p>
+                            <div class="stars">
+                                <div class="stars-in"> </div>
+                            </div>
+                            <span class="comments">@item.Reviews_tbl.Count</span>
+                        </div>
+                    </div>
+                }
+                @{var b =Model.OrderByDescending(x=>x.ReleaseDate).Take(6).Last();}
+                    <div class="movie last">
+                        <div class="movie-image"> <span class="play">@Html.ActionLink(" ", "Info", "Home", new { id = b.MovieID }, null)<span class="name">@b.MovieName</span></span> @Html.ActionLink(" ", "Info", "Home", null, new { style = "background: url('" + Url.Content(@b.MoviePoster) + "') no-repeat center right; background-size:cover; display:block; height:214px; width:152px;" }) </div>
+                        <div class="rating">
+                            <p>@Resources.Home.rating</p>
+                            <div class="stars">
+                                <div class="stars-in"> </div>
+                            </div>
+                            <span class="comments">@b.Reviews_tbl.Count</span>
+                        </div>
+                    </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <div class="box1">
+                <br />
+
+                <div class="head1">
+                    <h2>@Resources.Home.toprated</h2>
+                    <p class="text-right"><a href="#">@Resources.Home.seeall</a></p>
+                </div>
+                @{ var toprated = Model.OrderByDescending(x => x.Rating).Take(5);}
+                @foreach (var item in toprated)
+                {
+                    <div class="movie">
+                        <div class="movie-image"> <span class="play">@Html.ActionLink(" ", "Info", "Home", new { id = item.MovieID }, null)<span class="name">@item.MovieName</span></span>@Html.ActionLink(" ", "Info", "Home", null, new { style = "background: url('" + Url.Content(@item.MoviePoster) + "') no-repeat center right; background-size:cover; display:block; height:214px; width:152px;" }) </div>
+                        <div class="rating">
+                            <p>@Resources.Home.rating</p>
+                            <div class="stars">
+                                <div class="stars-in"> </div>
+                            </div>
+                            <span class="comments">@item.Reviews_tbl.Count</span>
+                        </div>
+                    </div>
+                }
+                @{var c = Model.OrderByDescending(x => x.Rating).Take(6).Last();}
+                <div class="movie last">
+                    <div class="movie-image"> <span class="play">@Html.ActionLink(" ", "Info", "Home", new { id = c.MovieID }, null)<span class="name">@c.MovieName</span></span> @Html.ActionLink(" ", "Info", "Home", null, new { style = "background: url('" + Url.Content(@c.MoviePoster) + "') no-repeat center right; display:block; background-size:cover; height:214px; width:152px;" }) </div>
+                    <div class="rating">
+                        <p>@Resources.Home.rating</p>
+                        <div class="stars">
+                            <div class="stars-in"> </div>
+                        </div>
+                        <span class="comments">@c.Reviews_tbl.Count</span>
+                    </div>
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+        </div>
+
+            <div class="box1">
+                <div class="head1">
+                    <h2>@Resources.Home.mostcommented</h2>
+                    <p class="text-right"><a href="#">@Resources.Home.seeall</a></p>
+                </div>
+                @{ var topcommented = Model.OrderByDescending(x => x.Reviews_tbl.Count).Take(5);}
+                @foreach (var item in topcommented)
+                {
+                    <div class="movie">
+                        <div class="movie-image"> <span class="play">@Html.ActionLink(" ", "Info", "Home", new { id = item.MovieID }, null)<span class="name">@item.MovieName</span></span>@Html.ActionLink(" ", "Info", "Home", null, new { style = "background: url('" + Url.Content(@item.MoviePoster) + "') no-repeat center right; background-size:cover;display:block; height:214px; width:152px;" }) </div>
+                        <div class="rating">
+                            <p>@Resources.Home.rating</p>
+                            <div class="stars">
+                                <div class="stars-in"> </div>
+                            </div>
+                            <span class="comments">@item.Reviews_tbl.Count</span>
+                        </div>
+                    </div>
+
+                }
+                @{var d = Model.OrderByDescending(x => x.Reviews_tbl.Count).Take(6).Last();}
+                <div class="movie last">
+                    <div class="movie-image"> <span class="play">@Html.ActionLink(" ", "Info", "Home", new { id = d.MovieID }, null)<span class="name">@d.MovieName</span></span> @Html.ActionLink(" ", "Info", "Home", null, new { style = "background: url('" + Url.Content(@d.MoviePoster) + "') no-repeat center right;  background-size:cover;display:block; height:214px; width:152px;" }) </div>
+                    <div class="rating">
+                        <p>@Resources.Home.rating</p>
+                        <div class="stars">
+                            <div class="stars-in"> </div>
+                        </div>
+                        <span class="comments">@d.Reviews_tbl.Count</span>
+                    </div>
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+        </div>
+        @{Html.RenderAction("_News", "Home");}
+    <br/>
+    </div>

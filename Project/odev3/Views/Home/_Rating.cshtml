@@ -1,0 +1,96 @@
+﻿@model Movies_tbl
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="all" />
+<link rel="stylesheet" href="~/Content/style.css" type="text/css" media="all" />
+
+
+<style type="text/css">
+    #submitbutton{
+        background-color:gray ;
+        color:ghostwhite;
+        font-size:10px;
+        font-weight:bold;
+        padding:1px;   
+    }
+    #marachi {
+        color: #eed566;
+        font-size: 15px;
+}
+    #hich{
+        color:white;
+    }
+</style>
+<meta charset="utf-8">
+<title>Bootstrap rating</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap core CSS -->
+<!-- Font Awesome CSS -->
+<link href="~/Content/font-awesome.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="~/Content/bootstrap-rating.css" rel="stylesheet">
+
+<div class="survey-builder container">
+    <div id="marachi">
+            @{Html.RenderAction("_AddRating", "Home", new { id = Model.MovieID }); }
+</div>
+</div>
+<script type="text/javascript" src="~/Scripts/tooltip.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap-rating.js"></script>
+<script>
+    $('#programmatically-rating').rating({
+            start: 0,
+        stop: 10
+    });
+    $(function () {
+        $('input.check').on('change', function () {
+          alert('Rating: ' + $(this).val());
+        });
+        $('#programmatically-set').click(function () {
+          $('#programmatically-rating').rating('rate', $('#programmatically-value').val());
+        });
+        $('#programmatically-get').click(function () {
+          alert($('#programmatically-rating').rating('rate'));
+        });
+        $('.rating-tooltip').rating({
+          extendSymbol: function (rate) {
+            $(this).tooltip({
+              container: 'body',
+              placement: 'bottom',
+              title: 'Rate ' + rate
+            });
+          }
+        });
+        $('.rating-tooltip-manual').rating({
+          extendSymbol: function () {
+            var title;
+            $(this).tooltip({
+              container: 'body',
+              placement: 'bottom',
+              trigger: 'manual',
+              title: function () {
+                return title;
+              }
+            });
+            $(this).on('rating.rateenter', function (e, rate) {
+              title = rate;
+              $(this).tooltip('show');
+            })
+            .on('rating.rateleave', function () {
+              $(this).tooltip('hide');
+            });
+          }
+        });
+        $('.rating').each(function () {
+          $('<span class="label label-default"></span>')
+            .text($(this).val() || ' ')
+            .insertAfter(this);
+        });
+        $('.rating').on('change', function () {
+          $(this).next('.label').text($(this).val());
+        });
+      });
+
+</script>

@@ -1,0 +1,125 @@
+﻿@model Movies_tbl
+@using System.Globalization;
+@{
+    ViewBag.Title = "Info";
+}
+
+@{ var asdfg = Model;}
+<br />
+<div class="box1">
+    <div class="row">
+        <div class="col-sm-5 col-md-4">
+            <img id="poster" src=@Model.MoviePoster height="400" width="300" />
+        </div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
+            <h1>@Model.MovieName <span class="paranthes">(</span><span id="release">@Model.ReleaseDate.Year</span><span class="paranthes">)</span></h1>
+            <div id="film-Genre">
+                <b class="line">|</b> @Model.Duration min &nbsp&nbsp<b class="line">|</b>  @Model.MovieGenre  <b class="line">|</b>@{var month = DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture);}
+                @Model.ReleaseDate.Day @month @Model.ReleaseDate.Year (@Model.Country)&nbsp;<b class="line">|</b><br /><br />
+            </div>
+            <img id="star" src="~/Content/images/Star-gold.jpg" />
+            <p id="rating">@string.Format("{0:0.0}", Model.Rating_tbl.Average(x => x.Rating))</p>
+
+            <p> @{Html.RenderAction("_Rating", "Home");}  </p>   Ratings: <br /><br /><b >@string.Format("{0:0.0}", Model.Rating_tbl.Average(x => x.Rating))</b> /10 from @Model.Rating_tbl.Count users
+            <br />@Resources.Home.reviews: @Model.Reviews_tbl.Count <br /><br /><hr />
+
+
+            @Resources.Home.director: @Model.Director<br />
+            @Resources.Home.writer: @Model.Writer<br />
+            @Resources.Home.stars: Zero Mostel, Gene Wilder, Dick Shawn |&nbsp&nbsp<a href="#fullcast">@Resources.Home.seefullcast»</a>
+        </div>
+    </div>
+</div>
+<style>
+
+    #cast{
+        font-size:30px;
+        color:darkgray;
+        font-weight:bolder;
+    }
+    .codegena {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.27198%;
+    }
+
+        .codegena iframe {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    /*Youtube Embed Code : Created with Codegena.com */
+</style>
+@{ string src = "https://www.youtube.com/embed/" + Model.Trailer + "?&theme=light&autohide=2&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3"; }
+<br />
+<br />
+<div class="box1">
+    <iframe width='980' height='494' src=@src frameborder="1"></iframe>
+</div>
+
+<div class="box1">
+    <h1 id="cast">@Resources.Home.Cast</h1>
+    @{ var a = Model.Cast_tbl;}
+    <div id="fullcast" class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>@Resources.Home.castname</th>
+                    <th>..................................</th>
+                    <th>@Resources.Home.castrole</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Cast_tbl)
+                {
+                    <tr>
+                        <td>@item.CastName</td>
+                        <td>..................................</td>
+                        <td>@item.CastRole</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@{ var reviews = Model.Reviews_tbl.Take(3);
+    var i = 0;}
+<div class="box1">
+    <div class="row">
+        <div id="User-Reviews">
+            <h1>@Resources.Home.userreviews</h1><br />
+            @foreach (var item in reviews)
+            {
+                var asdfgh = new Movie_ReviewDBEntities().Rating_tbl.Find(item.RatingID);
+                var asfdsakflj = asdfgh.Rating.ToString();
+                <em><span id="reviewtitle">@item.ReviewTitle</span> &nbsp;&nbsp;<span>@asfdsakflj stars</span></em>
+                <h6>@item.ReviewDate | By  @item.UserName (@item.Users_tbl.Country) </h6> <br />
+
+                <p id="reviewitsself">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@item.Review</p><br />
+                i++;
+            }
+            <br />
+            <br />
+            @if (i > 3)
+            {
+                <p class="text-left"><a href="#">@Resources.Home.seeallreviews</a></p>
+            }
+            @if (i == 0)
+            {
+                <p>No User Review</p>
+            }
+            <br />
+            @if (User.Identity.IsAuthenticated)
+            {
+            }
+            else
+            {
+                <span id="hich">@Html.ActionLink("Login To Review", "Login", "Account", null, new { id = "student", style = " background-color:black; padding:4px; text-decoration:none; Font-weight:bolder;" })</span>
+            }
+
+        </div>
+        </div>
+    </div>

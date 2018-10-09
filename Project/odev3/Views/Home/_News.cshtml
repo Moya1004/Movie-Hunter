@@ -1,0 +1,83 @@
+﻿@model List<News_tbl>
+
+@{
+    Layout = null;
+}
+@{var lang = HttpContext.Current.Request.RequestContext.RouteData.Values.First().Value; }
+<div class="box1">
+    @{ var a = Model.OrderByDescending(x => x.NewsDate).Take(3);}
+    <div id="news">
+        <div class="head1">
+            <h3>@Resources.Home.news</h3>
+            <p class="text-right"><a href="#">@Resources.Home.seeall</a></p>
+        </div>
+        @foreach (var item in a)
+        {
+            if (lang == "en")
+            {
+                <div class="content1">
+                    <p class="date">@item.NewsDate.ToShortDateString()</p>
+                    <h4>@item.NewsHeader</h4>
+                    <p>@item.NewsFirstParagraph </p>
+                    <a href="#">@Resources.Home.readmore</a>
+                </div>
+            }
+            else
+            {
+                <div class="content1">
+                    <p class="date">@item.NewsDate.ToShortDateString()</p>
+                    <h4>@item.NewsHeader_tr</h4>
+                    <p>@item.NewsFirstParagraph_tr </p>
+                    <a href="#">@Resources.Home.readmore</a>
+                </div>
+            }
+
+
+        }
+    </div>
+
+    <div id="coming">
+        <div class="head1">
+            <h3>@Resources.Home.coming_soon<strong>!</strong></h3>
+            <p class="text-right"><a href="#">@Resources.Home.seeall</a></p>
+        </div>
+        @{int i = 0;
+            }
+        @foreach (var item in Model)
+        {
+            Movie_ReviewDBEntities db = new Movie_ReviewDBEntities();
+            var movie = db.Movies_tbl.Find(item.MovieID);
+            if (movie != null)
+            {
+                if (movie.ReleaseDate > DateTime.Now)
+                {
+                    if (lang == "en")
+                    {
+                        <div class="content1">
+                            <h4>@item.NewsHeader </h4>
+
+                            <a href="#"><img src=@movie.MoviePoster alt="" /></a>
+                            <P>@item.NewsFirstParagraph</P>
+                            <a href="#">@Resources.Home.readmore</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="content1">
+                            <h4>@item.NewsHeader_tr </h4>
+
+                            <a href="#"><img src=@movie.MoviePoster alt="" /></a>
+                            <P>@item.NewsFirstParagraph_tr</P>
+                            <a href="#">@Resources.Home.readmore</a>
+                        </div>
+
+                    }
+                    i++;
+                    if (i == 2) { break; }
+                }
+
+            }
+        }
+    </div>
+    <div class="cl">&nbsp;</div>
+</div>

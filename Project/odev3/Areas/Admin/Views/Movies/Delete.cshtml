@@ -1,0 +1,123 @@
+﻿@model Movies_tbl
+@{
+    ViewBag.Title = "Delete Movie";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+  <html class="lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+  <html class="lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+  <html class="lt-ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 8]>
+  <!-->
+<html lang="en">
+<!--
+<![endif]-->
+<body>
+    <div class="container-fluid">
+        <div class="dashboard-wrapper">
+            <div class="main-container">
+                <br>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <div class="title">
+                                    <span class="fs1" aria-hidden="true" data-icon="&#xe023;"></span> Delete Movie
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <div class="form-horizontal no-margin">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.MovieName, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.MovieName, new { @class = "span12" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.ReleaseDate, new { @class = "control-label" }) &nbsp; &nbsp; &nbsp;
+                                            @Html.TextBoxFor(x => x.ReleaseDate ,new { @class = "span6" })
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.MovieGenre, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.MovieGenre, new { @class = "span12" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.MoviePoster, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.MoviePoster, new { @class = "span12" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.Duration, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.Duration, new { @class = "span4" })
+                                                @Html.TextBoxFor(x => x.MovieID, new { type = "hidden" })
+                                                @Html.TextBoxFor(x => x.Rating, new { type = "hidden" })
+                                                @Html.TextBoxFor(x => x.ReleaseDate, new { type = "hidden" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.Director, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.Director, new { @class = "span12" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.Writer, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.Writer, new { @class = "span12" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.Trailer, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.Trailer, new { @class = "span4" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            @Html.LabelFor(x => x.Country, new { @class = "control-label" })
+                                            <div class="controls controls-row">
+                                                @Html.TextBoxFor(x => x.Country, new { @class = "span4" })
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        @Html.ActionLink("Delete", "DeleteConfirmation", "Movies",new {id = Model.MovieID }, new { @class = "btn btn-info pull-right" })
+                                        <div class="clearfix"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/wysiwyg/wysihtml5-0.3.0.js"></script>
+    <script src="js/wysiwyg/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="js/date-picker/date.js"></script>
+    <script type="text/javascript" src="js/date-picker/daterangepicker.js"></script>
+    <script type="text/javascript" src="js/bootstrap-timepicker.js"></script>
+
+    <!-- Editable Inputs -->
+    <script src="js/bootstrap-editable.min.js"></script>
+    <script src="js/select2.js"></script>
+
+    <!-- custom Js -->
+    <script src="js/custom-forms.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>

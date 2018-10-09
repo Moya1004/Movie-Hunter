@@ -1,0 +1,87 @@
+﻿@model odev3.Models.Movie_tbl
+@using System.Globalization;
+@{
+    ViewBag.Title = "About";
+}
+<link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="all" />
+<link rel="stylesheet" href="~/Content/style.css" type="text/css" media="all" />
+
+<br />
+<div class="box1">
+    <div class="row">
+        <div class="col-sm-5 col-md-4">
+            <img id="poster" src=@Model.MoviePoster height="400" width="300" />
+        </div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
+            <h1>@Model.MovieName <span class="paranthes">(</span><span id="release">@Model.ReleaseDate.Value.Year</span><span class="paranthes">)</span></h1>
+            <div id="film-Genre">
+                <b class="line">|</b> @Model.Duration min &nbsp&nbsp<b class="line">|</b>  @Model.MovieGenre  <b class="line">|</b>@{var month = DateTime.Now.ToString("MMMM", CultureInfo.InvariantCulture);}
+                @Model.ReleaseDate.Value.Day @month @Model.ReleaseDate.Value.Year (@Model.Country)&nbsp;<b class="line">|</b><br /><br />
+            </div>
+
+            <img height="50" src="~/Content/images/Star-gold.jpg" />
+            Your rating:   -/10   Ratings: <br /><br />@Model.Rating from @Model.NumberOfRatings users
+            <br />Reviews: 3 user | 3 critic <br /><br /><hr />
+
+
+            Director: @Model.Director<br />
+            Writer: @Model.Writer<br />
+            Stars: Zero Mostel, Gene Wilder, Dick Shawn |&nbsp&nbsp<a href="#fullcast">See full cast and crew »</a>
+        </div>
+    </div>
+</div>
+<style>
+
+    #cast{
+        font-size:30px;
+        color:darkgray;
+        font-weight:bolder;
+    }
+    .codegena {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.27198%;
+    }
+
+        .codegena iframe {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    /*Youtube Embed Code : Created with Codegena.com */
+</style>
+@{ string src = "https://www.youtube.com/embed/" + Model.Trailer + "?&theme=light&autohide=2&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3"; }
+<br />
+<br />
+<div class="box1">
+    <iframe width='980' height='494' src=@src frameborder="1"></iframe>
+</div>
+
+<div class="box1">
+    <h1 id="cast">Cast</h1>
+    @{ var a = Model.Casts;}
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Cast Name</th>
+                    <th>..................................</th>
+                    <th>Cast Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Casts)
+            {
+                    <tr>
+                        <td>@item.CastName</td>
+                        <td>..................................</td>
+                        <td>@item.CastRole</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model News_tbl
+@{
+    ViewBag.Title = "Delete News";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="dashboard-wrapper">
+        <div class="main-container">
+            <br>
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="widget">
+                        <div class="widget-body">
+                            @using (Html.BeginForm("Delete", "News", FormMethod.Post, new { @class = "well" }))
+                            {
+                                Html.AntiForgeryToken();
+                                <label class="control-label" for="u-name">
+                                    News Details
+                                </label>
+                                <div class="control-group">
+                                    <div class="controls controls-row">
+                                        @Html.TextBoxFor(x => x.NewsHeader, new { @class = "span6", placeholder = "News Header", disabled = "disabled" })
+                                        @Html.TextBoxFor(x => x.NewsFirstParagraph, new { @class = "span6 input-left-top-margins", placeholder = "News Purpose", disabled = "disabled" })
+                                    </div>
+                                </div>
+                                <div class="control-group info">
+                                    <div class="wysiwyg-container">
+                                        @Html.TextAreaFor(x => x.AllOfTheNews, new { id = "wysiwyg", @class = "input-block-level no-margin", placeholder = "Full News.....", style = "height: 140px" , disabled = "disabled" })
+                                    </div>
+                                </div><br />
+                                <label class="control-label" for="u-name">
+                                    News Date
+                                </label> @Html.TextBoxFor(x => x.NewsDate, new { @class = "span6 input-left-top-margins", placeholder = "Date ...", disabled = "disabled" })
+                                @Html.TextBoxFor(x => x.NewsID, new { type = "hidden" })
+                                <hr />
+                                <label class="control-label" for="u-name">
+                                    MovieID
+                                </label> @Html.TextBoxFor(x => x.MovieID, new { @class = "span6 input-left-top-margins", placeholder = "None" , disabled="disabled" })
+                                <div class="control-group info no-margin">
+                                    <div class="controls">
+                                        @Html.ActionLink("Delete", "DeleteConfirmation", "News",new { id = Model.NewsID}, new { @class = "btn btn-info pull-right" })
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
